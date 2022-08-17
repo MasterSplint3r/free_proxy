@@ -131,7 +131,7 @@ class SocksServer(threading.Thread):
                         os.splice(read_target, client.fileno(), BUFF)
                 if err:
                     raise BreakoutException
-            except (BreakoutException, ConnectionResetError, ConnectionResetError):
+            except (BreakoutException, ConnectionResetError, BrokenPipeError):
                 client.close()
                 target.close()
                 return

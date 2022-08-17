@@ -1,3 +1,0 @@
-miniupnpc
-construct
-python-telegram-bot
