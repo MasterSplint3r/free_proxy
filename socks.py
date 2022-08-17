@@ -103,7 +103,7 @@ class SocksServer(threading.Thread):
                 remote_ip, remote_port = target.getsockname()
                 socks_resp = SOCKS_RESP.parse(b"\x05\x00\x00\x01" + socket.inet_aton(remote_ip) + socket.htons(remote_port).to_bytes(2, "big"))
                 client.send(SOCKS_RESP.build(socks_resp))
-            return target
+                return target
         #Just generically catch any errors so the server doesn't crash
         except:
             return None
@@ -131,7 +131,7 @@ class SocksServer(threading.Thread):
                         os.splice(read_target, client.fileno(), BUFF)
                 if err:
                     raise BreakoutException
-            except BreakoutException:
+            except (BreakoutException, ConnectionResetError, ConnectionResetError):
                 client.close()
                 target.close()
                 return
