@@ -44,7 +44,7 @@ class TelegramHandler(Updater):
 		
 	def stop_proxy(self, update: Update, context: CallbackContext):
 		update.message.reply_text("[+] Closing external port mapping")
-		update.message.reply_text(self.upnp.remove_port_mapping(1080, 1080))
+		update.message.reply_text(self.upnp.remove_port_mapping(1080))
 		#Set stop message to thread
 		self.server_thread.stop_thread = True
 
