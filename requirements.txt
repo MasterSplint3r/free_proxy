@@ -1,3 +1,3 @@
 miniupnpc
 construct
-requests
+python-telegram-bot
